@@ -59,8 +59,8 @@ Siguiendo el ejemplo anterior, supongamos que un usuario cumple con la solvencia
 | creditScore         | 1     |
 | waletBalance        | 1     |
 | userId              | 20    | 
-| userId              | 0     | 
-| clientRequeriments  | 20    | 
+| nonce              | 0     | 
+| clientRequeriments  | 2    | 
 
 
 > **Nota** :  solo `userId` y `platformScore` pueden ser distintos de `0` y `1`. 

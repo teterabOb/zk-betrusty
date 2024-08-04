@@ -30,8 +30,8 @@ Los negocios que ofrecen inmuebles en alquiler seleccionan uno o más criterios 
 
 El sistema opera de la siguiente manera:
 
-Si el usuario cumple con el requisito estipulado, el sistema retorna un 0.
-Si no cumple, retorna un 1.
+Si el usuario cumple con el requisito estipulado, el sistema retorna un `0`.
+Si no cumple, retorna un `1`.
 Ejemplo de Selección
 
 Un negocio decide que los postulantes deben tener nacionalidad argentina. Este es el único criterio solicitado.

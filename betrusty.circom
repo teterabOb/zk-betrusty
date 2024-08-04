@@ -26,6 +26,13 @@ template BeTrusty() {
 
     // validamos que sum sea mayor o igual que platformScore
     ge.out === 1;
+
+    component hash = Poseidon(4);
+    hash.inputs[0] <== linkedinProfession;
+    hash.inputs[1] <== platformScore;
+    hash.inputs[2] <== residenceCountry;
+    hash.inputs[3] <== creditScore;
+    hashedReputation <== hash.out;
 }
 
 component main = BeTrusty();

@@ -8,13 +8,11 @@ Luego generamos la prueba enviando ese secret
 
 `circom betrusty.circom --r1cs --wasm --sym --c`
 
-Luego generamos el circuito y pruebas para betrusty
-
 `node betrusty_js/generate_witness.js betrusty_js/betrusty.wasm input.json witness.wtns`
 
 `snarkjs powersoftau new bn128 12 pot12_0000.ptau -v`    
 
-`snarkjs powersoftau prepare phase2 pot12_0001.ptau pot12_final.ptau -v` 
+`snarkjs powersoftau contribute pot12_0000.ptau pot12_0001.ptau --name="First contribution" -v`
 
 `snarkjs powersoftau prepare phase2 pot12_0001.ptau pot12_final.ptau -v`  
 
@@ -27,6 +25,10 @@ Luego generamos el circuito y pruebas para betrusty
 `snarkjs groth16 prove multiplier2_0001.zkey witness.wtns proof.json public.json`   
 
 `snarkjs groth16 verify verification_key.json public.json proof.json`   
+
+Exportar el contrato verifier
+
+`snarkjs zkey export solidityverifier multiplier2_0001.zkey verifier.sol`
 
 Imprimir los inputs para enviar al contrato verifier:
 

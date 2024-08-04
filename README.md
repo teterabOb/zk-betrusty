@@ -59,6 +59,9 @@ Siguiendo el ejemplo anterior, supongamos que un usuario cumple con la solvencia
 | creditScore         | 1     |
 | waletBalance        | 1     |
 | userId              | 20    | 
+| userId              | 0     | 
+| clientRequeriments  | 20    | 
+
 
 > **Nota** :  solo `userId` y `platformScore` pueden ser distintos de `0` y `1`. 
 
@@ -66,12 +69,14 @@ Siguiendo el ejemplo anterior, supongamos que un usuario cumple con la solvencia
 
 ```JSON
 {
-    "linkedinProfession": "1",
-    "platformScore": "1",
-    "residenceCountry": "1",
-    "creditScore": "1", 
-    "waletBalance": "0",
-    "userId": "111"    
+    "linkedinProfession": "1", // si cumple con la profesion en linkedin
+    "platformScore": "1", // que score tiene de la plataforma
+    "residenceCountry": "1", // si cumple con el pais de residencia
+    "creditScore": "1", // si cumple con los requisitos crediticios
+    "waletBalance": "0", // si cumple con el requisito del balance
+    "userId": "111", // id del usuario
+    "nonce": "0",   // nonce interno para evitar colision
+    "clientRequeriments": "2" // si cumple con la cantidad de requisitos que solicita el negocio
 }
 ```
 

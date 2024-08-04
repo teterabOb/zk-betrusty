@@ -14,9 +14,9 @@ Luego generamos el circuito y pruebas para betrusty
 
 node betrusty_js/generate_witness.js betrusty_js/betrusty.wasm input.json witness.wtns
 
-## Explicación Caso de Uso
+# Explicación Caso de Uso
 
-
+A continuación se explica el funcionamiento del proyecto.
 
 ## Criterios de BeTrusty
 

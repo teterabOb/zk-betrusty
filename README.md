@@ -6,20 +6,32 @@ En este depositorio de encuentran los circuitos para generar las ZKP.
 
 Luego generamos la prueba enviando ese secret
 
-circom betrusty.circom --r1cs --wasm --sym --c
+`circom betrusty.circom --r1cs --wasm --sym --c`
 
 Luego generamos el circuito y pruebas para betrusty
 
-node betrusty_js/generate_witness.js betrusty_js/betrusty.wasm input.json witness.wtns
+`node betrusty_js/generate_witness.js betrusty_js/betrusty.wasm input.json witness.wtns`
 
-snarkjs powersoftau new bn128 12 pot12_0000.ptau -v     
-snarkjs powersoftau prepare phase2 pot12_0001.ptau pot12_final.ptau -v    
-snarkjs powersoftau prepare phase2 pot12_0001.ptau pot12_final.ptau -v    
-snarkjs groth16 setup betrusty.r1cs pot12_final.ptau multiplier2_0000.zkey
-narkjs zkey contribute multiplier2_0000.zkey multiplier2_0001.zkey --name="1st Contributor Name" -v
-snarkjs zkey export verificationkey multiplier2_0001.zkey verification_key.json     
-snarkjs groth16 prove multiplier2_0001.zkey witness.wtns proof.json public.json    
-snarkjs groth16 verify verification_key.json public.json proof.json      
+`snarkjs powersoftau new bn128 12 pot12_0000.ptau -v`    
+
+`snarkjs powersoftau prepare phase2 pot12_0001.ptau pot12_final.ptau -v` 
+
+`snarkjs powersoftau prepare phase2 pot12_0001.ptau pot12_final.ptau -v`  
+
+`snarkjs groth16 setup betrusty.r1cs pot12_final.ptau multiplier2_0000.zkey`
+
+`snarkjs zkey contribute multiplier2_0000.zkey multiplier2_0001.zkey --name="1st Contributor Name" -v`
+
+`snarkjs zkey export verificationkey multiplier2_0001.zkey verification_key.json`  
+
+`snarkjs groth16 prove multiplier2_0001.zkey witness.wtns proof.json public.json`   
+
+`snarkjs groth16 verify verification_key.json public.json proof.json`   
+
+Imprimir los inputs para enviar al contrato verifier:
+
+`snarkjs generatecall`
+
 # Explicación Caso de Uso
 
 A continuación se explica el funcionamiento del proyecto.

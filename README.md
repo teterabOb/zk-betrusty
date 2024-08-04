@@ -66,14 +66,12 @@ Siguiendo el ejemplo anterior, supongamos que un usuario cumple con la solvencia
 
 ```JSON
 {
-{
     "linkedinProfession": "1",
     "platformScore": "1",
     "residenceCountry": "1",
     "creditScore": "1", 
     "waletBalance": "0",
     "userId": "111"    
-}
 }
 ```
 

@@ -26,18 +26,6 @@ template BeTrusty() {
 
     // validamos que sum sea mayor o igual que platformScore
     ge.out === 1;
-
-    component hash = Poseidon(4);
-    hash.inputs[0] <== platformScore;
-    hash.inputs[1] <== residenceCountry;
-    hash.inputs[2] <== creditScore;
-    hash.inputs[3] <== waletBalance;        
-    
-    hashedReputation <== hash.out;
-
-    log("hashedReputation : ",hashedReputation);    
-    // Constraint to ensure the ownership is correct
-    beTrustyHash === hashedReputation;
 }
 
 component main = BeTrusty();

@@ -8,12 +8,18 @@ Luego generamos la prueba enviando ese secret
 
 circom betrusty.circom --r1cs --wasm --sym --c
 
-node betrustyHash_js/generate_witness.js betrustyHash_js/betrustyHash.wasm inputHash.json witness.wtns
-
 Luego generamos el circuito y pruebas para betrusty
 
 node betrusty_js/generate_witness.js betrusty_js/betrusty.wasm input.json witness.wtns
 
+snarkjs powersoftau new bn128 12 pot12_0000.ptau -v     
+snarkjs powersoftau prepare phase2 pot12_0001.ptau pot12_final.ptau -v    
+snarkjs powersoftau prepare phase2 pot12_0001.ptau pot12_final.ptau -v    
+snarkjs groth16 setup betrusty.r1cs pot12_final.ptau multiplier2_0000.zkey
+narkjs zkey contribute multiplier2_0000.zkey multiplier2_0001.zkey --name="1st Contributor Name" -v
+snarkjs zkey export verificationkey multiplier2_0001.zkey verification_key.json     
+snarkjs groth16 prove multiplier2_0001.zkey witness.wtns proof.json public.json    
+snarkjs groth16 verify verification_key.json public.json proof.json      
 # Explicación Caso de Uso
 
 A continuación se explica el funcionamiento del proyecto.

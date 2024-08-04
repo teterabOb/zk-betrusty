@@ -60,7 +60,7 @@ Siguiendo el ejemplo anterior, supongamos que un usuario cumple con la solvencia
 | waletBalance        | 1     |
 | userId              | 20    | 
 
-> ** Nota: ** solo userId y platformScore pueden ser distintos de `0` y `1`. 
+> **Nota** :  solo userId y platformScore pueden ser distintos de `0` y `1`. 
 
 ### Ejemplo Valores enviados al circuito
 

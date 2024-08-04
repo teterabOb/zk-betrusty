@@ -1,18 +1,8 @@
-## 
+# BeTrusty Circuitos
+
+En este depositorio de encuentran los circuitos para generar las ZKP.
 
 ## Parámetros
-
-```shell
-signal input userId; // id del sistema
-signal input score; // puntaje
-signal input assessment; // evaluacion
-signal input reputation; // oro , plata , bronce, etc ...
-signal input secret; // secret
-signal input beTrustyHash; // todos los valores anteriores hasheados
-```
-Primero Generaos la prueba de los inputs solamente
-
-
 
 Luego generamos la prueba enviando ese secret
 
@@ -26,29 +16,31 @@ node betrusty_js/generate_witness.js betrusty_js/betrusty.wasm input.json witnes
 
 ## Explicación Caso de Uso
 
-BeTrusty establece algunos criterios, los cuales los usuarios pueden cumplir o no. Hay un requisito excluyente, que deben cumpplir todos los postulantes, este es: la solvencia económica suficiente. La cual equivale a tres meses de arriendo en algún address validada por el protocolo.
 
-Luego, los negocios que ponen sus inmuebles en arriendo. seleccionan uno o más de los criterios que disponibiliza el protocolo e internamente los usuarios podrán visualizar los inmuebles a los cuáles puedan aplicar, siempre y cuando cumplan los requisitos.
 
-El sistema funciona de la siguiente manera:
+## Criterios de BeTrusty
 
-Si el usuario cumple con el requisito estipulado, el sistema retorna un `0` y si no cumple retorna un `1`.
+BeTrusty establece varios criterios que los usuarios pueden cumplir o no. Hay un requisito excluyente que todos los postulantes deben cumplir: solvencia económica suficiente, equivalente a tres meses de alquiler en una dirección validada por el protocolo.
 
-Ejemplo:
+### Proceso de Selección
 
-El negocio decide que la persona debe tener nacionalidad Argentina. Este es el único criterio que solicita este negocio.
+Los negocios que ofrecen inmuebles en alquiler seleccionan uno o más criterios proporcionados por el protocolo. Internamente, los usuarios podrán visualizar los inmuebles para los cuales cumplen los requisitos.
 
-Internamente el usuario visualizará ese inmueble para aprobar solo si tiene nacionalidad Argentina.
+### Funcionamiento del Sistema
 
-Luego al momento de aplicar, se generará una prueba de conocimien cero (ZKP).
+El sistema opera de la siguiente manera:
 
-La cuál tomará los valores retornados por BeTrusty. 
+Si el usuario cumple con el requisito estipulado, el sistema retorna un 0.
+Si no cumple, retorna un 1.
+Ejemplo de Selección
 
-Siguiente el mismo ejemplo, digamos que un usuario cumple  con la solvencia monetaria y es Argentino.
+Un negocio decide que los postulantes deben tener nacionalidad argentina. Este es el único criterio solicitado.
 
-Además BeTrusty establece una valoración interna según la cantidad de requisitos que cumple en relación a los que estén disponibles en la plataforma. Este se conoce como `platformScore`. Por ejemplo: si hay 10 requisitos y cumple los 10, tiene categoría oro y esta se representa con un `3`.
+Internamente, los usuarios solo visualizarán ese inmueble si tienen nacionalidad argentina.
+Al momento de aplicar, se generará una prueba de conocimiento cero (ZKP) que tomará los valores retornados por BeTrusty.
+Valoración Interna
 
-La tabla de valores es la siguiente:
+BeTrusty también establece una valoración interna llamada platformScore, basada en la cantidad de requisitos que cumple el usuario en relación a los disponibles en la plataforma. Esta valoración se clasifica de la siguiente manera:
 
 | Campo             | Valor |
 |-------------------|-------|
@@ -57,8 +49,7 @@ La tabla de valores es la siguiente:
 | Bronce            |  1    |
 | SinCategoria      |  0    |
 
-
-Siguiendo con el ejemplo, los valores que se enviarían para las pruebas de conocimiento cero, serían los siguientes:
+Siguiendo el ejemplo anterior, supongamos que un usuario cumple con la solvencia económica y es argentino. Los valores enviados para las pruebas de conocimiento cero serían los siguientes:
 
 | Campo               | Valor |
 |---------------------|-------|
